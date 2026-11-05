@@ -13,6 +13,7 @@ public class Controlador {
         Empleado nuevo = new Empleado(nombre,codigo,salario,cargo);
         empresa.registrarEmpleado(nuevo);
         System.out.println(nuevo);
+        System.out.println("proyectoEmpresa.controlador.Controlador.registrarEmpleado()");
     }
     
     public void actualizarSalario(float salario, Integer codigo){
