@@ -1,29 +1,46 @@
 package proyectoEmpresa.modelo.entidad;
 
 import java.io.Serializable;
+import java.util.Objects;
 import proyectoEmpresa.modelo.enums.Cargo;
 
 public class Empleado implements Comparable<Empleado>, Serializable {
-   private String nombre;
-   private Integer codigo;
-   private float salario;
-   private Cargo cargo;
+
+    public static final float SALARIO_MINIMO = 2000000;
+
+    private String nombre;
+    private Integer codigo;
+    private float salario;
+    private Cargo cargo;
 
     public Empleado() {
     }
 
     public Empleado(String nombre, Integer codigo, float salario, Cargo cargo) {
+        if (nombre == null || nombre.trim().isEmpty()) {
+            throw new IllegalArgumentException("El nombre no puede estar vacío");
+        }
         this.nombre = nombre;
+
+        if (codigo == null || codigo <= 0) {
+            throw new IllegalArgumentException("El código debe ser mayor a 0");
+        }
         this.codigo = codigo;
+
+        if (salario < SALARIO_MINIMO) {
+            throw new IllegalArgumentException("El salario no puede ser menor a $2.000.000");
+        }
         this.salario = salario;
+
+        if (cargo == null) {
+            throw new IllegalArgumentException("Debe seleccionar un cargo");
+        }
         this.cargo = cargo;
     }
 
     public Empleado(Integer codigo) {
         this.codigo = codigo;
     }
-    
-    
 
     public String getNombre() {
         return nombre;
@@ -41,32 +58,11 @@ public class Empleado implements Comparable<Empleado>, Serializable {
         return cargo;
     }
 
- public void setNombre(String nombre) {
-        if (nombre == null || nombre.trim().isEmpty()) {
-            throw new IllegalArgumentException("El nombre no puede estar vacío");
-        }
-        this.nombre = nombre;
-    }
-
-    public void setCodigo(Integer codigo) {
-        if (codigo == null || codigo <= 0) {
-            throw new IllegalArgumentException("El código debe ser mayor a 0");
-        }
-        this.codigo = codigo;
-    }
-
     public void setSalario(float salario) {
-        if (salario < 2000000) {
-            throw new IllegalArgumentException("El salario no puede ser menor a $2.000.0000");
+        if (salario < SALARIO_MINIMO) {
+            throw new IllegalArgumentException("El salario no puede ser menor a $2.000.000");
         }
         this.salario = salario;
-    }
-
-    public void setCargo(Cargo cargo) {
-        if (cargo == null) {
-            throw new IllegalArgumentException("Debe seleccionar un cargo");
-        }
-        this.cargo = cargo;
     }
 
     @Override
@@ -75,12 +71,27 @@ public class Empleado implements Comparable<Empleado>, Serializable {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Empleado)) {
+            return false;
+        }
+        return Objects.equals(codigo, ((Empleado) o).codigo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(codigo);
+    }
+
+    @Override
     public String toString() {
-        return "Empleado: \n" +
-                "codigo = " + codigo +
-                "\nnombre = " + nombre +
-                "\nsalario = " + salario +
-                "\ncargo = " + cargo
-                ;
+        return "Empleado: \n"
+                + "codigo = " + codigo
+                + "\nnombre = " + nombre
+                + "\nsalario = " + salario
+                + "\ncargo = " + cargo;
     }
 }

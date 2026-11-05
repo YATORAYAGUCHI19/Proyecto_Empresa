@@ -1,15 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package proyectoEmpresa.vista;
+
 import proyectoEmpresa.controlador.Controlador;
 import proyectoEmpresa.modelo.enums.Cargo;
 
-/**
- *
- * @author ESTUDIANTE
- */
 public class EjemploVisual extends javax.swing.JFrame {
     private Controlador controladorEmpresa = new Controlador();
     

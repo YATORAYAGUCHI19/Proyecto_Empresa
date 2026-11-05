@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArbolBB<E extends Comparable> implements Serializable{
+public class ArbolBB<E extends Comparable<E>> implements Serializable {
 
     private NodoABB<E> raiz;
 
@@ -58,7 +58,7 @@ public class ArbolBB<E extends Comparable> implements Serializable{
         }
     }
 
-    public E mayor(NodoABB<E> r) {
+    private E mayor(NodoABB<E> r) {
         if (r.der == null) {
             return r.dato;
         } else {
@@ -66,7 +66,11 @@ public class ArbolBB<E extends Comparable> implements Serializable{
         }
     }
 
-    public NodoABB<E> buscar(NodoABB<E> r, E x) {
+    public NodoABB<E> buscar(E x) {
+        return buscar(raiz, x);
+    }
+
+    private NodoABB<E> buscar(NodoABB<E> r, E x) {
         if (r == null) {
             return null;
         } else {
@@ -84,14 +88,12 @@ public class ArbolBB<E extends Comparable> implements Serializable{
     public boolean eliminar(E x) {
         if (raiz == null) {
             return false;
-        } else {
-            if (buscar(raiz, x) != null) {
-                raiz = eliminar(raiz, x);
-                return true;
-            } else {
-                return false;
-            }
         }
+        if (buscar(x) != null) {
+            raiz = eliminar(raiz, x);
+            return true;
+        }
+        return false;
     }
 
     private NodoABB<E> eliminar(NodoABB<E> r, E x) {

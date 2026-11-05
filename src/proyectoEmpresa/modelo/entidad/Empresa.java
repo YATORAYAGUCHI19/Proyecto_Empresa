@@ -15,57 +15,54 @@ public class Empresa implements Serializable {
         this.empleados = new ArbolBB<>();
     }
 
-    public ArbolBB<Empleado> getEmpleados() {
-        return empleados;
-    }
-
-    public boolean registrarEmpleado(Empleado e) {
+    // 1. Registrar
+    public void registrarEmpleado(Empleado e) {
         try {
             empleados.insertar(e);
-            return true;
-        } catch (Exception x) {
-            return false;
+        } catch (IllegalArgumentException ex) {
+            if (e != null && e.getCodigo() != null && empleados.buscar(e) != null) {
+                throw new IllegalArgumentException("Ya existe un empleado con el código " + e.getCodigo());
+            }
+            throw ex;
         }
     }
 
+    // 2. Listar todos
     public List<Empleado> listarEmpleados() {
         return empleados.listarInorden();
     }
 
+    // 3. Dado código decir empleado
     public Empleado buscarPorCodigo(Integer codigo) {
-        Empleado buscador = new Empleado(codigo);
-        NodoABB<Empleado> nodo = empleados.buscar(empleados.getRaiz(), buscador);
-        if (nodo ==  null) {
-            throw new IllegalArgumentException("No existe ningun empleado con el codigo: " + codigo);
+        NodoABB<Empleado> nodo = empleados.buscar(new Empleado(codigo));
+        if (nodo == null) {
+            throw new IllegalArgumentException("No existe ningún empleado con el código: " + codigo);
         }
         return nodo.dato;
     }
 
-    //DESDE AQUI ESTA BUENO Y REVISADO, DE AQUI SIGUE CON EL MONITOR
     // 4. Dado nombre decir empleado
     public List<Empleado> buscarPorNombre(String nombre) {
-        List<Empleado> todos = empleados.listarInorden();
         List<Empleado> encontrados = new ArrayList<>();
-        for (Empleado e : todos) {
-            if (e.getNombre().equalsIgnoreCase(nombre.trim())) {
+        if (nombre == null) {
+            return encontrados;
+        }
+        for (Empleado e : empleados.listarInorden()) {
+            if (e.getNombre() != null && e.getNombre().equalsIgnoreCase(nombre.trim())) {
                 encontrados.add(e);
             }
         }
         return encontrados;
     }
 
-    // 5. Dado código de 1 empleado borrarlo
-    public boolean eliminarEmpleado(Integer codigo) {
-        Empleado buscador = new Empleado(codigo);
-        boolean elimino = empleados.eliminar(buscador);
-        if (elimino) {
-            System.out.println("El empleado fue eliminado de manera correcta");
-            return true;
+    // 5. Borrar por código
+    public void eliminarEmpleado(Integer codigo) {
+        if (!empleados.eliminar(new Empleado(codigo))) {
+            throw new IllegalArgumentException("No se encontró el empleado a eliminar");
         }
-        throw new IllegalArgumentException("No se encontro el empleado a eliminar");
     }
 
-    // 6. Listar todos los empleados de Cargo X
+    // 6. Listar por cargo
     public List<Empleado> listarPorCargo(Cargo cargo) {
         List<Empleado> todos = empleados.listarInorden();
         List<Empleado> filtrados = new ArrayList<>();
@@ -77,11 +74,10 @@ public class Empresa implements Serializable {
         return filtrados;
     }
 
-    // 7. Valor de la nómina (sumar salarios)
+    // 7. Valor de la nómina
     public float calcularValorNomina() {
-        List<Empleado> todos = empleados.listarInorden();
         float total = 0;
-        for (Empleado e : todos) {
+        for (Empleado e : empleados.listarInorden()) {
             total += e.getSalario();
         }
         return total;
@@ -108,41 +104,40 @@ public class Empresa implements Serializable {
         if (todos.isEmpty()) {
             return 0;
         }
-        return calcularValorNomina() / todos.size();
-    }
-
-    // 10. Listado de empleados que superan el promedio
-    public List<Empleado> listarEmpleadosQueSuperanPromedio() {
-        float promedio = calcularPromedioSalarios();
-        List<Empleado> todos = empleados.listarInorden();
-        List<Empleado> mayorPromedio = new ArrayList<>();
+        float total = 0;
         for (Empleado e : todos) {
-            if (e.getSalario() > promedio) {
-                mayorPromedio.add(e);
-            }
+            total += e.getSalario();
         }
-        return mayorPromedio;
+        return total / todos.size();
     }
 
-    // 11. Hallar los empleados que ganan el mínimo
-    public List<Empleado> listarEmpleadosGananMinimo() {
+    // 10. Empleados que superan el promedio
+    public List<Empleado> listarEmpleadosQueSuperanPromedio() {
         List<Empleado> todos = empleados.listarInorden();
+        float promedio = calcularPromedioSalarios();
         List<Empleado> resultado = new ArrayList<>();
         for (Empleado e : todos) {
-            if (e.getSalario() == 2000000) {
+            if (e.getSalario() > promedio) {
                 resultado.add(e);
             }
         }
         return resultado;
     }
 
-    // 12. Dado el código de un empleado actualizar salario
-    public boolean actualizarSalario(Integer codigo, float nuevoSalario) {
-        Empleado e = buscarPorCodigo(codigo);
-        if (e != null) {
-            e.setSalario(nuevoSalario);
-            return true;
+    // 11. Empleados que ganan el mínimo
+    public List<Empleado> listarEmpleadosGananMinimo() {
+        List<Empleado> resultado = new ArrayList<>();
+        for (Empleado e : empleados.listarInorden()) {
+            if (e.getSalario() == Empleado.SALARIO_MINIMO) {
+                resultado.add(e);
+            }
         }
-        return false;
+        return resultado;
+    }
+
+    // 12. Actualizar salario por código
+    public void actualizarSalario(Integer codigo, float nuevoSalario) {
+        Empleado e = buscarPorCodigo(codigo);
+        e.setSalario(nuevoSalario);
     }
 }
