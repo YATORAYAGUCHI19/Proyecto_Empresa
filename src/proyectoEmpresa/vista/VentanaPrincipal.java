@@ -1,244 +1,348 @@
 package proyectoEmpresa.vista;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.awt.event.ActionEvent;
 import java.util.List;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import proyectoEmpresa.controlador.Controlador;
 import proyectoEmpresa.modelo.entidad.Empleado;
 import proyectoEmpresa.modelo.enums.Cargo;
 
-/** Ventana Swing sencilla con todos los controles en un solo archivo. */
+/**
+ * Ventana principal generada con el formulario de NetBeans.
+ */
 public class VentanaPrincipal extends JFrame {
 
     private final Controlador controlador;
-    private final JTextField codigoCrear = new JTextField();
-    private final JTextField nombreCrear = new JTextField();
-    private final JTextField salarioCrear = new JTextField();
-    private final JComboBox<Cargo> cargoCrear = new JComboBox<>(Cargo.values());
-    private final JTextField codigoActualizar = new JTextField();
-    private final JTextField salarioActualizar = new JTextField();
-    private final JTextField codigoBuscar = new JTextField();
-    private final JTextField nombreBuscar = new JTextField();
-    private final JComboBox<Cargo> cargoBuscar = new JComboBox<>(Cargo.values());
-    private final JTextField codigoEliminar = new JTextField();
-    private final JLabel mensaje = new JLabel(" ");
-    private final JLabel nomina = new JLabel();
-    private final JLabel promedio = new JLabel();
-    private final JLabel mayor = new JLabel();
-    private final JLabel cantidad = new JLabel();
-    private final List<DefaultTableModel> modelos = new ArrayList<>();
 
     public VentanaPrincipal(Controlador controlador) {
-        super("Gestión de empleados");
         this.controlador = controlador;
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(950, 700);
-        setLocationRelativeTo(null);
-        setContentPane(crearVentana());
+        initComponents();
         actualizarFinanzas();
         mostrarResultados(controlador.listarEmpleados());
     }
 
-    private JPanel crearVentana() {
-        JPanel principal = new JPanel(new BorderLayout(5, 5));
-        principal.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        principal.add(new JLabel("Sistema de gestión de empleados"), BorderLayout.NORTH);
-        JTabbedPane pestanas = new JTabbedPane();
-        pestanas.addTab("Gestión", crearGestion());
-        pestanas.addTab("Consultas", crearConsultas());
-        pestanas.addTab("Finanzas", crearFinanzas());
-        pestanas.addTab("Salarios", crearSalarios());
-        principal.add(pestanas, BorderLayout.CENTER);
-        return principal;
-    }
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">
+    private void initComponents() {
+        panelPrincipal = new javax.swing.JPanel();
+        titulo = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
+        pestanas = new javax.swing.JTabbedPane();
+        panelGestion = new javax.swing.JPanel();
+        panelCrear = new javax.swing.JPanel();
+        etiquetaCodigoCrear = new javax.swing.JLabel();
+        codigoCrear = new javax.swing.JTextField();
+        etiquetaNombreCrear = new javax.swing.JLabel();
+        nombreCrear = new javax.swing.JTextField();
+        etiquetaSalarioCrear = new javax.swing.JLabel();
+        salarioCrear = new javax.swing.JTextField();
+        etiquetaCargoCrear = new javax.swing.JLabel();
+        cargoCrear = new javax.swing.JComboBox<>();
+        botonCrear = new javax.swing.JButton();
+        botonLimpiarCrear = new javax.swing.JButton();
+        panelActualizar = new javax.swing.JPanel();
+        etiquetaCodigoActualizar = new javax.swing.JLabel();
+        codigoActualizar = new javax.swing.JTextField();
+        etiquetaSalarioActualizar = new javax.swing.JLabel();
+        salarioActualizar = new javax.swing.JTextField();
+        botonActualizar = new javax.swing.JButton();
+        botonLimpiarActualizar = new javax.swing.JButton();
+        scrollGestion = new javax.swing.JScrollPane();
+        tablaGestion = new javax.swing.JTable();
+        panelConsultas = new javax.swing.JPanel();
+        panelBusquedaCodigo = new javax.swing.JPanel();
+        etiquetaCodigoBuscar = new javax.swing.JLabel();
+        codigoBuscar = new javax.swing.JTextField();
+        botonBuscarCodigo = new javax.swing.JButton();
+        panelBusquedaNombre = new javax.swing.JPanel();
+        etiquetaNombreBuscar = new javax.swing.JLabel();
+        nombreBuscar = new javax.swing.JTextField();
+        botonBuscarNombre = new javax.swing.JButton();
+        panelBusquedaCargo = new javax.swing.JPanel();
+        etiquetaCargoBuscar = new javax.swing.JLabel();
+        cargoBuscar = new javax.swing.JComboBox<>();
+        botonBuscarCargo = new javax.swing.JButton();
+        botonListarTodos = new javax.swing.JButton();
+        panelEliminar = new javax.swing.JPanel();
+        etiquetaCodigoEliminar = new javax.swing.JLabel();
+        codigoEliminar = new javax.swing.JTextField();
+        botonEliminar = new javax.swing.JButton();
+        scrollConsultas = new javax.swing.JScrollPane();
+        tablaConsultas = new javax.swing.JTable();
+        panelFinanzas = new javax.swing.JPanel();
+        panelIndicadores = new javax.swing.JPanel();
+        etiquetaNomina = new javax.swing.JLabel();
+        nomina = new javax.swing.JLabel();
+        etiquetaPromedio = new javax.swing.JLabel();
+        promedio = new javax.swing.JLabel();
+        etiquetaMayor = new javax.swing.JLabel();
+        mayor = new javax.swing.JLabel();
+        etiquetaCantidad = new javax.swing.JLabel();
+        cantidad = new javax.swing.JLabel();
+        scrollFinanzas = new javax.swing.JScrollPane();
+        tablaFinanzas = new javax.swing.JTable();
+        panelSalarios = new javax.swing.JPanel();
+        botonSobrePromedio = new javax.swing.JButton();
+        botonSalarioMinimo = new javax.swing.JButton();
+        botonTodosSalarios = new javax.swing.JButton();
+        scrollSalarios = new javax.swing.JScrollPane();
+        tablaSalarios = new javax.swing.JTable();
+        mensaje = new javax.swing.JLabel();
 
-    private JPanel crearGestion() {
-        JPanel panel = new JPanel(new BorderLayout(5, 5));
-        JPanel formularios = new JPanel(new GridLayout(1, 2, 5, 5));
-        formularios.add(crearFormularioEmpleado());
-        formularios.add(crearFormularioActualizar());
-        panel.add(formularios, BorderLayout.NORTH);
-        panel.add(mensaje, BorderLayout.SOUTH);
-        panel.add(crearTabla(), BorderLayout.CENTER);
-        return panel;
-    }
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gestión de empleados");
+        setMinimumSize(new java.awt.Dimension(900, 600));
 
-    private JPanel crearFormularioEmpleado() {
-        JPanel panel = new JPanel(new GridLayout(0, 2, 5, 5));
-        panel.setBorder(BorderFactory.createTitledBorder("Crear empleado"));
-        panel.add(new JLabel("Código:")); panel.add(codigoCrear);
-        panel.add(new JLabel("Nombre:")); panel.add(nombreCrear);
-        panel.add(new JLabel("Salario:")); panel.add(salarioCrear);
-        panel.add(new JLabel("Cargo:")); panel.add(cargoCrear);
-        JButton crear = new JButton("Crear empleado");
-        crear.addActionListener(e -> crearEmpleado());
-        JButton limpiar = new JButton("Limpiar");
-        limpiar.addActionListener(e -> {
-            codigoCrear.setText(""); nombreCrear.setText(""); salarioCrear.setText("");
+        titulo.setFont(new java.awt.Font("Segoe UI", 1, 18));
+        titulo.setText("Sistema de gestión de empleados");
+
+        panelCrear.setBorder(javax.swing.BorderFactory.createTitledBorder("Crear empleado"));
+        etiquetaCodigoCrear.setText("Código:");
+        etiquetaNombreCrear.setText("Nombre:");
+        etiquetaSalarioCrear.setText("Salario:");
+        etiquetaCargoCrear.setText("Cargo:");
+        cargoCrear.setModel(new DefaultComboBoxModel<>(Cargo.values()));
+        botonCrear.setText("Crear empleado");
+        botonCrear.addActionListener(this::botonCrearActionPerformed);
+        botonLimpiarCrear.setText("Limpiar");
+        botonLimpiarCrear.addActionListener(evt -> {
+            codigoCrear.setText("");
+            nombreCrear.setText("");
+            salarioCrear.setText("");
         });
-        panel.add(crear); panel.add(limpiar);
-        return panel;
-    }
+        javax.swing.GroupLayout panelCrearLayout = new javax.swing.GroupLayout(panelCrear);
+        panelCrear.setLayout(panelCrearLayout);
+        panelCrearLayout.setHorizontalGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCrearLayout.createSequentialGroup().addContainerGap()
+                .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(etiquetaCodigoCrear).addComponent(etiquetaNombreCrear)
+                    .addComponent(etiquetaSalarioCrear).addComponent(etiquetaCargoCrear))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(codigoCrear).addComponent(nombreCrear).addComponent(salarioCrear).addComponent(cargoCrear, 0, 170, Short.MAX_VALUE)
+                    .addGroup(panelCrearLayout.createSequentialGroup().addComponent(botonCrear).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(botonLimpiarCrear)))
+                .addContainerGap()));
+        panelCrearLayout.setVerticalGroup(panelCrearLayout.createSequentialGroup().addContainerGap()
+            .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(etiquetaCodigoCrear).addComponent(codigoCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(etiquetaNombreCrear).addComponent(nombreCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(etiquetaSalarioCrear).addComponent(salarioCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(etiquetaCargoCrear).addComponent(cargoCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(botonCrear).addComponent(botonLimpiarCrear))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
-    private JPanel crearFormularioActualizar() {
-        JPanel panel = new JPanel(new GridLayout(0, 2, 5, 5));
-        panel.setBorder(BorderFactory.createTitledBorder("Actualizar salario"));
-        panel.add(new JLabel("Código:")); panel.add(codigoActualizar);
-        panel.add(new JLabel("Nuevo salario:")); panel.add(salarioActualizar);
-        JButton actualizar = new JButton("Actualizar");
-        actualizar.addActionListener(e -> actualizarSalario());
-        JButton limpiar = new JButton("Limpiar");
-        limpiar.addActionListener(e -> {
-            codigoActualizar.setText(""); salarioActualizar.setText("");
+        panelActualizar.setBorder(javax.swing.BorderFactory.createTitledBorder("Actualizar salario"));
+        etiquetaCodigoActualizar.setText("Código:");
+        etiquetaSalarioActualizar.setText("Nuevo salario:");
+        botonActualizar.setText("Actualizar");
+        botonActualizar.addActionListener(this::botonActualizarActionPerformed);
+        botonLimpiarActualizar.setText("Limpiar");
+        botonLimpiarActualizar.addActionListener(evt -> {
+            codigoActualizar.setText("");
+            salarioActualizar.setText("");
         });
-        panel.add(actualizar); panel.add(limpiar);
-        return panel;
-    }
+        javax.swing.GroupLayout panelActualizarLayout = new javax.swing.GroupLayout(panelActualizar);
+        panelActualizar.setLayout(panelActualizarLayout);
+        panelActualizarLayout.setHorizontalGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelActualizarLayout.createSequentialGroup().addContainerGap()
+                .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(etiquetaCodigoActualizar).addComponent(etiquetaSalarioActualizar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(codigoActualizar).addComponent(salarioActualizar)
+                    .addGroup(panelActualizarLayout.createSequentialGroup().addComponent(botonActualizar).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(botonLimpiarActualizar)))
+                .addContainerGap()));
+        panelActualizarLayout.setVerticalGroup(panelActualizarLayout.createSequentialGroup().addContainerGap()
+            .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(etiquetaCodigoActualizar).addComponent(codigoActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(etiquetaSalarioActualizar).addComponent(salarioActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(botonActualizar).addComponent(botonLimpiarActualizar))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
-    private JPanel crearConsultas() {
-        JPanel panel = new JPanel(new BorderLayout(5, 5));
-        JPanel consultas = new JPanel(new GridLayout(2, 2, 5, 5));
-        consultas.add(crearBusquedaCodigo());
-        consultas.add(crearBusquedaNombre());
-        consultas.add(crearBusquedaCargo());
-        consultas.add(crearEliminacion());
-        panel.add(consultas, BorderLayout.NORTH);
-        panel.add(crearTabla(), BorderLayout.CENTER);
-        return panel;
-    }
+        configurarTabla(tablaGestion);
+        scrollGestion.setViewportView(tablaGestion);
+        javax.swing.GroupLayout panelGestionLayout = new javax.swing.GroupLayout(panelGestion);
+        panelGestion.setLayout(panelGestionLayout);
+        panelGestionLayout.setHorizontalGroup(panelGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGestionLayout.createSequentialGroup().addContainerGap().addComponent(panelCrear, 0, 0, Short.MAX_VALUE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(panelActualizar, 0, 0, Short.MAX_VALUE).addContainerGap())
+            .addComponent(scrollGestion, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE));
+        panelGestionLayout.setVerticalGroup(panelGestionLayout.createSequentialGroup()
+            .addGroup(panelGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(panelCrear).addComponent(panelActualizar))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(scrollGestion, 0, 330, Short.MAX_VALUE));
 
-    private JPanel crearBusquedaCodigo() {
-        JPanel panel = new JPanel(new GridLayout(0, 1, 5, 5));
-        panel.setBorder(BorderFactory.createTitledBorder("Buscar por código"));
-        panel.add(new JLabel("Código:")); panel.add(codigoBuscar);
-        JButton buscar = new JButton("Buscar");
-        buscar.addActionListener(e -> {
-            try {
-                mostrarResultados(Collections.singletonList(controlador.buscarPorCodigo(Integer.parseInt(codigoBuscar.getText().trim()))));
-            } catch (RuntimeException ex) { mensaje.setText(ex.getMessage()); }
-        });
-        panel.add(buscar);
-        return panel;
-    }
+        configurarBusquedaCodigo();
+        configurarBusquedaNombre();
+        configurarBusquedaCargo();
+        configurarEliminacion();
+        configurarTabla(tablaConsultas);
+        scrollConsultas.setViewportView(tablaConsultas);
+        javax.swing.GroupLayout consultasLayout = new javax.swing.GroupLayout(panelConsultas);
+        panelConsultas.setLayout(consultasLayout);
+        consultasLayout.setHorizontalGroup(consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(consultasLayout.createSequentialGroup().addContainerGap().addComponent(panelBusquedaCodigo, 0, 0, Short.MAX_VALUE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(panelBusquedaNombre, 0, 0, Short.MAX_VALUE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(panelBusquedaCargo, 0, 0, Short.MAX_VALUE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(panelEliminar, 0, 0, Short.MAX_VALUE).addContainerGap())
+            .addComponent(scrollConsultas, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE));
+        consultasLayout.setVerticalGroup(consultasLayout.createSequentialGroup()
+            .addGroup(consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(panelBusquedaCodigo).addComponent(panelBusquedaNombre).addComponent(panelBusquedaCargo).addComponent(panelEliminar))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(scrollConsultas, 0, 330, Short.MAX_VALUE));
 
-    private JPanel crearBusquedaNombre() {
-        JPanel panel = new JPanel(new GridLayout(0, 1, 5, 5));
-        panel.setBorder(BorderFactory.createTitledBorder("Buscar por nombre"));
-        panel.add(new JLabel("Nombre contiene:")); panel.add(nombreBuscar);
-        JButton buscar = new JButton("Buscar");
-        buscar.addActionListener(e -> {
-            String texto = nombreBuscar.getText().trim().toLowerCase();
-            List<Empleado> lista = new ArrayList<>();
-            for (Empleado empleado : controlador.listarEmpleados()) {
-                if (!texto.isEmpty() && empleado.getNombre().toLowerCase().contains(texto)) lista.add(empleado);
+        configurarFinanzas();
+        configurarTabla(tablaFinanzas);
+        scrollFinanzas.setViewportView(tablaFinanzas);
+        javax.swing.GroupLayout finanzasLayout = new javax.swing.GroupLayout(panelFinanzas);
+        panelFinanzas.setLayout(finanzasLayout);
+        finanzasLayout.setHorizontalGroup(finanzasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelIndicadores, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE).addComponent(scrollFinanzas, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE));
+        finanzasLayout.setVerticalGroup(finanzasLayout.createSequentialGroup().addComponent(panelIndicadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(scrollFinanzas, 0, 380, Short.MAX_VALUE));
+
+        botonSobrePromedio.setText("Empleados sobre el promedio");
+        botonSobrePromedio.addActionListener(evt -> mostrarResultados(controlador.listarQueSuperanPromedio()));
+        botonSalarioMinimo.setText("Empleados con salario mínimo");
+        botonSalarioMinimo.addActionListener(evt -> mostrarResultados(controlador.listarGananMinimo()));
+        botonTodosSalarios.setText("Todos los empleados");
+        botonTodosSalarios.addActionListener(evt -> mostrarResultados(controlador.listarEmpleados()));
+        configurarTabla(tablaSalarios);
+        scrollSalarios.setViewportView(tablaSalarios);
+        javax.swing.GroupLayout salariosLayout = new javax.swing.GroupLayout(panelSalarios);
+        panelSalarios.setLayout(salariosLayout);
+        salariosLayout.setHorizontalGroup(salariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(salariosLayout.createSequentialGroup().addContainerGap().addComponent(botonSobrePromedio).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(botonSalarioMinimo).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(botonTodosSalarios).addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(scrollSalarios, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE));
+        salariosLayout.setVerticalGroup(salariosLayout.createSequentialGroup().addGroup(salariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(botonSobrePromedio).addComponent(botonSalarioMinimo).addComponent(botonTodosSalarios)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(scrollSalarios, 0, 450, Short.MAX_VALUE));
+
+        pestanas.addTab("Gestión", panelGestion);
+        pestanas.addTab("Consultas", panelConsultas);
+        pestanas.addTab("Finanzas", panelFinanzas);
+        pestanas.addTab("Salarios", panelSalarios);
+        javax.swing.GroupLayout principalLayout = new javax.swing.GroupLayout(panelPrincipal);
+        panelPrincipal.setLayout(principalLayout);
+        principalLayout.setHorizontalGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(principalLayout.createSequentialGroup().addContainerGap().addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(pestanas).addComponent(titulo).addComponent(mensaje)).addContainerGap()));
+        principalLayout.setVerticalGroup(principalLayout.createSequentialGroup().addContainerGap().addComponent(titulo).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(pestanas, 0, 530, Short.MAX_VALUE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(mensaje).addContainerGap());
+        setContentPane(panelPrincipal);
+        pack();
+        setLocationRelativeTo(null);
+    }
+    // </editor-fold>
+
+    private void configurarTabla(javax.swing.JTable tabla) {
+        tabla.setModel(new DefaultTableModel(new Object[][]{}, new String[]{"Código", "Nombre", "Cargo", "Salario"}) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
             }
-            mostrarResultados(lista);
         });
-        panel.add(buscar);
-        return panel;
+        tabla.setAutoCreateRowSorter(true);
     }
 
-    private JPanel crearBusquedaCargo() {
-        JPanel panel = new JPanel(new GridLayout(0, 1, 5, 5));
-        panel.setBorder(BorderFactory.createTitledBorder("Buscar por cargo"));
-        panel.add(new JLabel("Cargo:")); panel.add(cargoBuscar);
-        JButton buscar = new JButton("Buscar");
-        buscar.addActionListener(e -> mostrarResultados(controlador.listarPorCargo((Cargo) cargoBuscar.getSelectedItem())));
-        JButton todos = new JButton("Listar todos");
-        todos.addActionListener(e -> mostrarResultados(controlador.listarEmpleados()));
-        panel.add(buscar); panel.add(todos);
-        return panel;
+    private void configurarBusquedaCodigo() {
+        panelBusquedaCodigo.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar por código"));
+        etiquetaCodigoBuscar.setText("Código:");
+        botonBuscarCodigo.setText("Buscar");
+        botonBuscarCodigo.addActionListener(this::botonBuscarCodigoActionPerformed);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(panelBusquedaCodigo);
+        panelBusquedaCodigo.setLayout(layout);
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(codigoBuscar).addComponent(etiquetaCodigoBuscar).addComponent(botonBuscarCodigo)).addContainerGap()));
+        layout.setVerticalGroup(layout.createSequentialGroup().addContainerGap().addComponent(etiquetaCodigoBuscar).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(codigoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(botonBuscarCodigo).addContainerGap());
     }
 
-    private JPanel crearEliminacion() {
-        JPanel panel = new JPanel(new GridLayout(0, 1, 5, 5));
-        panel.setBorder(BorderFactory.createTitledBorder("Eliminar empleado"));
-        panel.add(new JLabel("Código:")); panel.add(codigoEliminar);
-        JButton eliminar = new JButton("Eliminar");
-        eliminar.addActionListener(e -> eliminarEmpleado());
-        panel.add(eliminar);
-        return panel;
+    private void configurarBusquedaNombre() {
+        panelBusquedaNombre.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar por nombre"));
+        etiquetaNombreBuscar.setText("Nombre contiene:");
+        botonBuscarNombre.setText("Buscar");
+        botonBuscarNombre.addActionListener(evt -> mostrarResultados(controlador.buscarPorNombre(nombreBuscar.getText().trim())));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(panelBusquedaNombre);
+        panelBusquedaNombre.setLayout(layout);
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(nombreBuscar).addComponent(etiquetaNombreBuscar).addComponent(botonBuscarNombre)).addContainerGap()));
+        layout.setVerticalGroup(layout.createSequentialGroup().addContainerGap().addComponent(etiquetaNombreBuscar).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(nombreBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(botonBuscarNombre).addContainerGap());
     }
 
-    private JPanel crearFinanzas() {
-        JPanel panel = new JPanel(new BorderLayout(5, 5));
-        JPanel datos = new JPanel(new GridLayout(0, 2, 5, 5));
-        datos.setBorder(BorderFactory.createTitledBorder("Resumen financiero"));
-        datos.add(new JLabel("Nómina total:")); datos.add(nomina);
-        datos.add(new JLabel("Promedio salarial:")); datos.add(promedio);
-        datos.add(new JLabel("Mayor salario:")); datos.add(mayor);
-        datos.add(new JLabel("Cantidad de empleados:")); datos.add(cantidad);
-        panel.add(datos, BorderLayout.NORTH);
-        panel.add(crearTabla(), BorderLayout.CENTER);
-        return panel;
+    private void configurarBusquedaCargo() {
+        panelBusquedaCargo.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar por cargo"));
+        etiquetaCargoBuscar.setText("Cargo:");
+        cargoBuscar.setModel(new DefaultComboBoxModel<>(Cargo.values()));
+        botonBuscarCargo.setText("Buscar");
+        botonBuscarCargo.addActionListener(evt -> mostrarResultados(controlador.listarPorCargo((Cargo) cargoBuscar.getSelectedItem())));
+        botonListarTodos.setText("Listar todos");
+        botonListarTodos.addActionListener(evt -> mostrarResultados(controlador.listarEmpleados()));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(panelBusquedaCargo);
+        panelBusquedaCargo.setLayout(layout);
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(cargoBuscar, 0, 150, Short.MAX_VALUE).addComponent(etiquetaCargoBuscar).addGroup(layout.createSequentialGroup().addComponent(botonBuscarCargo).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(botonListarTodos))).addContainerGap()));
+        layout.setVerticalGroup(layout.createSequentialGroup().addContainerGap().addComponent(etiquetaCargoBuscar).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(cargoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(botonBuscarCargo).addComponent(botonListarTodos)).addContainerGap());
     }
 
-    private JPanel crearSalarios() {
-        JPanel panel = new JPanel(new BorderLayout(5, 5));
-        JPanel botones = new JPanel(new GridLayout(0, 1, 5, 5));
-        botones.setBorder(BorderFactory.createTitledBorder("Consultas de salarios"));
-        JButton sobrePromedio = new JButton("Empleados sobre el promedio");
-        sobrePromedio.addActionListener(e -> mostrarResultados(controlador.listarQueSuperanPromedio()));
-        JButton minimo = new JButton("Empleados con salario mínimo");
-        minimo.addActionListener(e -> mostrarResultados(controlador.listarGananMinimo()));
-        JButton todos = new JButton("Todos los empleados");
-        todos.addActionListener(e -> mostrarResultados(controlador.listarEmpleados()));
-        botones.add(sobrePromedio); botones.add(minimo); botones.add(todos);
-        panel.add(botones, BorderLayout.NORTH);
-        panel.add(crearTabla(), BorderLayout.CENTER);
-        return panel;
+    private void configurarEliminacion() {
+        panelEliminar.setBorder(javax.swing.BorderFactory.createTitledBorder("Eliminar empleado"));
+        etiquetaCodigoEliminar.setText("Código:");
+        botonEliminar.setText("Eliminar");
+        botonEliminar.addActionListener(this::botonEliminarActionPerformed);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(panelEliminar);
+        panelEliminar.setLayout(layout);
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(codigoEliminar).addComponent(etiquetaCodigoEliminar).addComponent(botonEliminar)).addContainerGap()));
+        layout.setVerticalGroup(layout.createSequentialGroup().addContainerGap().addComponent(etiquetaCodigoEliminar).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(codigoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(botonEliminar).addContainerGap());
     }
 
-    private JPanel crearTabla() {
-        DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Código", "Nombre", "Cargo", "Salario"}, 0) {
-            @Override public boolean isCellEditable(int fila, int columna) { return false; }
-        };
-        modelos.add(modelo);
-        JTable tabla = new JTable(modelo);
-        return new JPanel(new BorderLayout()) {{ add(new JScrollPane(tabla), BorderLayout.CENTER); }};
+    private void configurarFinanzas() {
+        panelIndicadores.setBorder(javax.swing.BorderFactory.createTitledBorder("Indicadores financieros"));
+        etiquetaNomina.setText("Nómina total:");
+        etiquetaPromedio.setText("Promedio salarial:");
+        etiquetaMayor.setText("Mayor salario:");
+        etiquetaCantidad.setText("Cantidad de empleados:");
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(panelIndicadores);
+        panelIndicadores.setLayout(layout);
+        layout.setHorizontalGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(etiquetaNomina).addComponent(etiquetaPromedio).addComponent(etiquetaMayor).addComponent(etiquetaCantidad)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(nomina).addComponent(promedio).addComponent(mayor).addComponent(cantidad)).addContainerGap(500, Short.MAX_VALUE));
+        layout.setVerticalGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(etiquetaNomina).addComponent(nomina)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(etiquetaPromedio).addComponent(promedio)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(etiquetaMayor).addComponent(mayor)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(etiquetaCantidad).addComponent(cantidad)).addContainerGap());
     }
 
-    private void crearEmpleado() {
+    private void botonCrearActionPerformed(ActionEvent evt) {
         try {
-            controlador.registrarEmpleado(nombreCrear.getText().trim(), Integer.parseInt(codigoCrear.getText().trim()),
-                    Float.parseFloat(salarioCrear.getText().trim()), (Cargo) cargoCrear.getSelectedItem());
-            mensaje.setText("Empleado creado."); mostrarResultados(controlador.listarEmpleados()); actualizarFinanzas();
-        } catch (RuntimeException ex) { mensaje.setText(ex.getMessage()); }
+            controlador.registrarEmpleado(nombreCrear.getText().trim(), Integer.parseInt(codigoCrear.getText().trim()), Float.parseFloat(salarioCrear.getText().trim()), (Cargo) cargoCrear.getSelectedItem());
+            mensaje.setText("Empleado creado.");
+            refrescar();
+        } catch (RuntimeException ex) {
+            mensaje.setText(ex.getMessage());
+        }
     }
 
-    private void actualizarSalario() {
+    private void botonActualizarActionPerformed(ActionEvent evt) {
         try {
-            controlador.actualizarSalario(Integer.parseInt(codigoActualizar.getText().trim()),
-                    Float.parseFloat(salarioActualizar.getText().trim()));
-            mensaje.setText("Salario actualizado."); mostrarResultados(controlador.listarEmpleados()); actualizarFinanzas();
-        } catch (RuntimeException ex) { mensaje.setText(ex.getMessage()); }
+            controlador.actualizarSalario(Integer.parseInt(codigoActualizar.getText().trim()), Float.parseFloat(salarioActualizar.getText().trim()));
+            mensaje.setText("Salario actualizado.");
+            refrescar();
+        } catch (RuntimeException ex) {
+            mensaje.setText(ex.getMessage());
+        }
     }
 
-    private void eliminarEmpleado() {
+    private void botonBuscarCodigoActionPerformed(ActionEvent evt) {
+        try {
+            mostrarResultados(java.util.Collections.singletonList(controlador.buscarPorCodigo(Integer.parseInt(codigoBuscar.getText().trim()))));
+        } catch (RuntimeException ex) {
+            mensaje.setText(ex.getMessage());
+        }
+    }
+
+    private void botonEliminarActionPerformed(ActionEvent evt) {
         try {
             int codigo = Integer.parseInt(codigoEliminar.getText().trim());
             Empleado empleado = controlador.buscarPorCodigo(codigo);
-            int respuesta = JOptionPane.showConfirmDialog(this, "¿Eliminar a " + empleado.getNombre() + "?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
-            if (respuesta == JOptionPane.YES_OPTION) {
-                controlador.eliminarEmpleado(codigo); mensaje.setText("Empleado eliminado.");
-                mostrarResultados(controlador.listarEmpleados()); actualizarFinanzas();
+            if (JOptionPane.showConfirmDialog(this, "¿Eliminar a " + empleado.getNombre() + "?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                controlador.eliminarEmpleado(codigo);
+                mensaje.setText("Empleado eliminado.");
+                refrescar();
             }
-        } catch (RuntimeException ex) { mensaje.setText(ex.getMessage()); }
+        } catch (RuntimeException ex) {
+            mensaje.setText(ex.getMessage());
+        }
+    }
+
+    private void refrescar() {
+        mostrarResultados(controlador.listarEmpleados());
+        actualizarFinanzas();
     }
 
     private void actualizarFinanzas() {
@@ -250,13 +354,83 @@ public class VentanaPrincipal extends JFrame {
     }
 
     private void mostrarResultados(List<Empleado> empleados) {
-        for (DefaultTableModel modelo : modelos) {
-            modelo.setRowCount(0);
-            for (Empleado empleado : empleados) {
-                modelo.addRow(new Object[]{empleado.getCodigo(), empleado.getNombre(), empleado.getCargo(), empleado.getSalario()});
-            }
+        actualizarTabla(tablaGestion, empleados);
+        actualizarTabla(tablaConsultas, empleados);
+        actualizarTabla(tablaFinanzas, empleados);
+        actualizarTabla(tablaSalarios, empleados);
+    }
+
+    private void actualizarTabla(javax.swing.JTable tabla, List<Empleado> empleados) {
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        modelo.setRowCount(0);
+        for (Empleado empleado : empleados) {
+            modelo.addRow(new Object[]{empleado.getCodigo(), empleado.getNombre(), empleado.getCargo(), empleado.getSalario()});
         }
     }
+
+    private javax.swing.JButton botonActualizar;
+    private javax.swing.JButton botonBuscarCargo;
+    private javax.swing.JButton botonBuscarCodigo;
+    private javax.swing.JButton botonBuscarNombre;
+    private javax.swing.JButton botonCrear;
+    private javax.swing.JButton botonEliminar;
+    private javax.swing.JButton botonLimpiarActualizar;
+    private javax.swing.JButton botonLimpiarCrear;
+    private javax.swing.JButton botonListarTodos;
+    private javax.swing.JButton botonSalarioMinimo;
+    private javax.swing.JButton botonSobrePromedio;
+    private javax.swing.JButton botonTodosSalarios;
+    private javax.swing.JLabel cantidad;
+    private javax.swing.JComboBox<Cargo> cargoBuscar;
+    private javax.swing.JComboBox<Cargo> cargoCrear;
+    private javax.swing.JTextField codigoActualizar;
+    private javax.swing.JTextField codigoBuscar;
+    private javax.swing.JTextField codigoCrear;
+    private javax.swing.JTextField codigoEliminar;
+    private javax.swing.JLabel etiquetaCargoBuscar;
+    private javax.swing.JLabel etiquetaCargoCrear;
+    private javax.swing.JLabel etiquetaCantidad;
+    private javax.swing.JLabel etiquetaCodigoActualizar;
+    private javax.swing.JLabel etiquetaCodigoBuscar;
+    private javax.swing.JLabel etiquetaCodigoCrear;
+    private javax.swing.JLabel etiquetaCodigoEliminar;
+    private javax.swing.JLabel etiquetaMayor;
+    private javax.swing.JLabel etiquetaNombreBuscar;
+    private javax.swing.JLabel etiquetaNombreCrear;
+    private javax.swing.JLabel etiquetaNomina;
+    private javax.swing.JLabel etiquetaPromedio;
+    private javax.swing.JLabel etiquetaSalarioActualizar;
+    private javax.swing.JLabel etiquetaSalarioCrear;
+    private javax.swing.JLabel mayor;
+    private javax.swing.JLabel mensaje;
+    private javax.swing.JTextField nombreBuscar;
+    private javax.swing.JTextField nombreCrear;
+    private javax.swing.JLabel nomina;
+    private javax.swing.JPanel panelActualizar;
+    private javax.swing.JPanel panelBusquedaCargo;
+    private javax.swing.JPanel panelBusquedaCodigo;
+    private javax.swing.JPanel panelBusquedaNombre;
+    private javax.swing.JPanel panelConsultas;
+    private javax.swing.JPanel panelCrear;
+    private javax.swing.JPanel panelEliminar;
+    private javax.swing.JPanel panelFinanzas;
+    private javax.swing.JPanel panelGestion;
+    private javax.swing.JPanel panelIndicadores;
+    private javax.swing.JPanel panelPrincipal;
+    private javax.swing.JPanel panelSalarios;
+    private javax.swing.JTabbedPane pestanas;
+    private javax.swing.JLabel promedio;
+    private javax.swing.JTextField salarioActualizar;
+    private javax.swing.JTextField salarioCrear;
+    private javax.swing.JScrollPane scrollConsultas;
+    private javax.swing.JScrollPane scrollFinanzas;
+    private javax.swing.JScrollPane scrollGestion;
+    private javax.swing.JScrollPane scrollSalarios;
+    private javax.swing.JTable tablaConsultas;
+    private javax.swing.JTable tablaFinanzas;
+    private javax.swing.JTable tablaGestion;
+    private javax.swing.JTable tablaSalarios;
+    private javax.swing.JLabel titulo;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new VentanaPrincipal(new Controlador()).setVisible(true));

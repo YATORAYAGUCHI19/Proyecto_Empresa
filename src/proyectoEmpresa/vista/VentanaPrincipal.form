@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents />
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Gestión de empleados"/>
@@ -11,94 +11,45 @@
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
-    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
-    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
   </AuxValues>
-  <Layout>
-    <DimensionLayout dim="0">
-      <Group type="103" groupAlignment="0" attributes="0">
-        <Component id="pestanas" alignment="0" min="0" pref="900" max="32767" attributes="0"/>
-      </Group>
-    </DimensionLayout>
-    <DimensionLayout dim="1">
-      <Group type="103" groupAlignment="0" attributes="0">
-        <Component id="pestanas" alignment="0" min="0" pref="650" max="32767" attributes="0"/>
-      </Group>
-    </DimensionLayout>
-  </Layout>
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
   <SubComponents>
-    <Component class="javax.swing.JTabbedPane" name="pestanas">
-      <Properties>
-        <Property name="name" type="java.lang.String" value="pestanas"/>
-      </Properties>
+    <Component class="javax.swing.JPanel" name="panelPrincipal">
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="panelGestion">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Gestión"/>
-              </Border>
-            </Property>
-          </Properties>
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-            <Property name="columns" type="int" value="2"/>
-            <Property name="rows" type="int" value="4"/>
-          </Layout>
+        <Component class="javax.swing.JLabel" name="titulo">
+          <Properties><Property name="text" type="java.lang.String" value="Sistema de gestión de empleados"/></Properties>
+          <Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.BorderLayoutConstraints" value="North"/></Constraints>
+        </Component>
+        <Component class="javax.swing.JTabbedPane" name="pestanas">
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblCodigoCrear"><Properties><Property name="text" type="java.lang.String" value="Código"/></Properties></Component>
-            <Component class="javax.swing.JTextField" name="txtCodigoCrear"/>
-            <Component class="javax.swing.JLabel" name="lblNombreCrear"><Properties><Property name="text" type="java.lang.String" value="Nombre"/></Properties></Component>
-            <Component class="javax.swing.JTextField" name="txtNombreCrear"/>
-            <Component class="javax.swing.JLabel" name="lblSalarioCrear"><Properties><Property name="text" type="java.lang.String" value="Salario"/></Properties></Component>
-            <Component class="javax.swing.JTextField" name="txtSalarioCrear"/>
-            <Component class="javax.swing.JLabel" name="lblCargoCrear"><Properties><Property name="text" type="java.lang.String" value="Cargo"/></Properties></Component>
-            <Component class="javax.swing.JComboBox" name="cmbCargoCrear"/>
+            <Container class="javax.swing.JPanel" name="panelGestion">
+              <Properties><Property name="name" type="java.lang.String" value="Gestión"/></Properties>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="panelCrear"><Properties><Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor"><Border info="TitledBorder"><TitledBorder title="Crear empleado"/></Border></Property></Properties><SubComponents><Component class="javax.swing.JTextField" name="codigoCrear"/><Component class="javax.swing.JTextField" name="nombreCrear"/><Component class="javax.swing.JTextField" name="salarioCrear"/><Component class="javax.swing.JComboBox" name="cargoCrear"/><Component class="javax.swing.JButton" name="botonCrear"/><Component class="javax.swing.JButton" name="botonLimpiarCrear"/></SubComponents></Container>
+                <Container class="javax.swing.JPanel" name="panelActualizar"><Properties><Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor"><Border info="TitledBorder"><TitledBorder title="Actualizar salario"/></Border></Property></Properties><SubComponents><Component class="javax.swing.JTextField" name="codigoActualizar"/><Component class="javax.swing.JTextField" name="salarioActualizar"/><Component class="javax.swing.JButton" name="botonActualizar"/><Component class="javax.swing.JButton" name="botonLimpiarActualizar"/></SubComponents></Container>
+                <Container class="javax.swing.JScrollPane" name="scrollGestion"><SubComponents><Component class="javax.swing.JTable" name="tablaGestion"/></SubComponents></Container>
+              </SubComponents>
+              <Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.BorderLayoutConstraints" value="Center"/></Constraints>
+            </Container>
+            <Container class="javax.swing.JPanel" name="panelConsultas"><Properties><Property name="name" type="java.lang.String" value="Consultas"/></Properties><SubComponents><Container class="javax.swing.JPanel" name="panelBusquedaCodigo"/><Container class="javax.swing.JPanel" name="panelBusquedaNombre"/><Container class="javax.swing.JPanel" name="panelBusquedaCargo"/><Container class="javax.swing.JPanel" name="panelEliminar"/><Container class="javax.swing.JScrollPane" name="scrollConsultas"><SubComponents><Component class="javax.swing.JTable" name="tablaConsultas"/></SubComponents></Container></SubComponents><Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.BorderLayoutConstraints" value="Center"/></Constraints></Container>
+            <Container class="javax.swing.JPanel" name="panelFinanzas"><Properties><Property name="name" type="java.lang.String" value="Finanzas"/></Properties><SubComponents><Container class="javax.swing.JPanel" name="panelIndicadores"/><Container class="javax.swing.JScrollPane" name="scrollFinanzas"><SubComponents><Component class="javax.swing.JTable" name="tablaFinanzas"/></SubComponents></Container></SubComponents><Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.BorderLayoutConstraints" value="Center"/></Constraints></Container>
+            <Container class="javax.swing.JPanel" name="panelSalarios"><Properties><Property name="name" type="java.lang.String" value="Salarios"/></Properties><SubComponents><Component class="javax.swing.JButton" name="botonSobrePromedio"/><Component class="javax.swing.JButton" name="botonSalarioMinimo"/><Component class="javax.swing.JButton" name="botonTodosSalarios"/><Container class="javax.swing.JScrollPane" name="scrollSalarios"><SubComponents><Component class="javax.swing.JTable" name="tablaSalarios"/></SubComponents></Container></SubComponents><Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.BorderLayoutConstraints" value="Center"/></Constraints></Container>
           </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="panelConsultas">
-          <Properties><Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor"><Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo"><TitledBorder title="Consultas"/></Border></Property></Properties>
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout"><Property name="columns" type="int" value="2"/><Property name="rows" type="int" value="4"/></Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblCodigoBuscar"><Properties><Property name="text" type="java.lang.String" value="Código"/></Properties></Component>
-            <Component class="javax.swing.JTextField" name="txtCodigoBuscar"/>
-            <Component class="javax.swing.JLabel" name="lblNombreBuscar"><Properties><Property name="text" type="java.lang.String" value="Nombre"/></Properties></Component>
-            <Component class="javax.swing.JTextField" name="txtNombreBuscar"/>
-            <Component class="javax.swing.JLabel" name="lblCargoBuscar"><Properties><Property name="text" type="java.lang.String" value="Cargo"/></Properties></Component>
-            <Component class="javax.swing.JComboBox" name="cmbCargoBuscar"/>
-            <Component class="javax.swing.JButton" name="btnBuscar"><Properties><Property name="text" type="java.lang.String" value="Buscar"/></Properties></Component>
-            <Component class="javax.swing.JButton" name="btnEliminar"><Properties><Property name="text" type="java.lang.String" value="Eliminar"/></Properties></Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="panelFinanzas">
-          <Properties><Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor"><Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo"><TitledBorder title="Finanzas"/></Border></Property></Properties>
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout"><Property name="columns" type="int" value="2"/><Property name="rows" type="int" value="4"/></Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblNomina"><Properties><Property name="text" type="java.lang.String" value="Nómina total"/></Properties></Component>
-            <Component class="javax.swing.JLabel" name="valorNomina"/>
-            <Component class="javax.swing.JLabel" name="lblPromedio"><Properties><Property name="text" type="java.lang.String" value="Promedio"/></Properties></Component>
-            <Component class="javax.swing.JLabel" name="valorPromedio"/>
-            <Component class="javax.swing.JLabel" name="lblMayor"><Properties><Property name="text" type="java.lang.String" value="Mayor salario"/></Properties></Component>
-            <Component class="javax.swing.JLabel" name="valorMayor"/>
-            <Component class="javax.swing.JLabel" name="lblCantidad"><Properties><Property name="text" type="java.lang.String" value="Cantidad"/></Properties></Component>
-            <Component class="javax.swing.JLabel" name="valorCantidad"/>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="panelSalarios">
-          <Properties><Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor"><Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo"><TitledBorder title="Salarios"/></Border></Property></Properties>
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JButton" name="btnSobrePromedio"><Properties><Property name="text" type="java.lang.String" value="Sobre el promedio"/></Properties></Component>
-            <Component class="javax.swing.JButton" name="btnMinimo"><Properties><Property name="text" type="java.lang.String" value="Salario mínimo"/></Properties></Component>
-            <Component class="javax.swing.JButton" name="btnTodos"><Properties><Property name="text" type="java.lang.String" value="Todos"/></Properties></Component>
-          </SubComponents>
-        </Container>
+          <Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.BorderLayoutConstraints" value="Center"/></Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="mensaje"><Properties><Property name="text" type="java.lang.String" value=" "/></Properties><Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.BorderLayoutConstraints" value="South"/></Constraints></Component>
       </SubComponents>
+      <Constraints><Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.BorderLayoutConstraints" value="Center"/></Constraints>
     </Component>
   </SubComponents>
 </Form>
