@@ -17,6 +17,9 @@ public class Empresa implements Serializable {
 
     // 1. Registrar
     public void registrarEmpleado(Empleado e) {
+        if (e == null) {
+            throw new IllegalArgumentException("El empleado no puede ser nulo");
+        }
         try {
             empleados.insertar(e);
         } catch (IllegalArgumentException ex) {
@@ -34,6 +37,11 @@ public class Empresa implements Serializable {
 
     // 3. Dado código decir empleado
     public Empleado buscarPorCodigo(Integer codigo) {
+        if (codigo == null || codigo <= 0) {
+            throw new IllegalArgumentException(
+                    "El código del empleado no puede ser null y debe ser mayor que 0"
+            );
+        }
         NodoABB<Empleado> nodo = empleados.buscar(new Empleado(codigo));
         if (nodo == null) {
             throw new IllegalArgumentException("No existe ningún empleado con el código: " + codigo);
@@ -43,6 +51,9 @@ public class Empresa implements Serializable {
 
     // 4. Dado nombre decir empleado
     public List<Empleado> buscarPorNombre(String nombre) {
+        if (nombre == null || nombre.trim().isEmpty()) {
+            throw new IllegalArgumentException("El nombre de búsqueda no puede estar vacío");
+        }
         List<Empleado> encontrados = new ArrayList<>();
         if (nombre == null) {
             return encontrados;
@@ -57,6 +68,11 @@ public class Empresa implements Serializable {
 
     // 5. Borrar por código
     public void eliminarEmpleado(Integer codigo) {
+        if (codigo == null || codigo <= 0) {
+            throw new IllegalArgumentException(
+                    "El código del empleado no puede ser null y debe ser mayor que 0"
+            );
+        }
         if (!empleados.eliminar(new Empleado(codigo))) {
             throw new IllegalArgumentException("No se encontró el empleado a eliminar");
         }
@@ -64,6 +80,9 @@ public class Empresa implements Serializable {
 
     // 6. Listar por cargo
     public List<Empleado> listarPorCargo(Cargo cargo) {
+        if (cargo == null) {
+            throw new IllegalArgumentException("El cargo no puede ser nulo");
+        }
         List<Empleado> todos = empleados.listarInorden();
         List<Empleado> filtrados = new ArrayList<>();
         for (Empleado e : todos) {

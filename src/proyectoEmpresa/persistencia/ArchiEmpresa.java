@@ -16,7 +16,7 @@ public class ArchiEmpresa {
         salida.close();
     }
 
-    public Empresa cargarEmpresa(String rutaArchivo) throws IOException, ClassNotFoundException {
+    public Empresa cargarEmpresa() throws IOException, ClassNotFoundException {
         ObjectInputStream entrada = new ObjectInputStream(new FileInputStream("empresa.obj"));
         Empresa empresa = (Empresa) entrada.readObject();
         entrada.close();

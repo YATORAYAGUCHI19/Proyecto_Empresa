@@ -14,7 +14,7 @@ public class Controlador {
 
     public Controlador() {
         try {
-            empresa = archivo.cargarEmpresa("empresa.obj");
+            empresa = archivo.cargarEmpresa();
         } catch (IOException | ClassNotFoundException e) {
             empresa = new Empresa();
         }

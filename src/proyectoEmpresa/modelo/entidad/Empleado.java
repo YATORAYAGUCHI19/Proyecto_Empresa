@@ -39,6 +39,9 @@ public class Empleado implements Comparable<Empleado>, Serializable {
     }
 
     public Empleado(Integer codigo) {
+        if (codigo == null || codigo <= 0) {
+            throw new IllegalArgumentException("El código debe ser mayor a 0");
+        }
         this.codigo = codigo;
     }
 
